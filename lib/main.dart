@@ -1,4 +1,4 @@
-import 'package:exam_4_oy/views/screens/home.dart';
+import 'package:exam_4_oy/views/screens/search.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,6 +10,6 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: HomeScreen(), debugShowCheckedModeBanner: false);
+    return MaterialApp(home: SearchScreen(), debugShowCheckedModeBanner: false);
   }
 }
