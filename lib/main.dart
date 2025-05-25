@@ -1,4 +1,4 @@
-import 'package:exam_4_oy/views/screens/food_screen.dart';
+import 'package:exam_4_oy/views/screens/food_details.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,6 +10,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: BurgerScreen(), debugShowCheckedModeBanner: false);
+    return MaterialApp(
+      home: FoodDetailsScreen(),
+      debugShowCheckedModeBanner: false,
+    );
   }
 }
