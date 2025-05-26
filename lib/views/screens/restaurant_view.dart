@@ -1,4 +1,5 @@
 import 'package:exam_4_oy/views/widgets/burger_card.dart';
+import 'package:exam_4_oy/views/widgets/button.dart';
 import 'package:exam_4_oy/views/widgets/food_info.dart';
 import 'package:exam_4_oy/views/widgets/info_row.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,254 @@ class RestaurantView extends StatefulWidget {
 class _RestaurantViewState extends State<RestaurantView> {
   final List<String> categories = ['Burger', 'Sandwich', 'Pizza', 'Hot Dog'];
   int selectedIndex = 0;
+  String selectedOffer = 'Delivery';
+  final bool onlinePaymentAvailable = false;
+  String selectedDeliveryTime = '10-15 min';
+  String selectedPricing = '\$\$';
+  int selectedRating = 4;
+
+  void _showFilterDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return StatefulBuilder(
+          builder: (context, setDialogState) {
+            return Dialog(
+              backgroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Container(
+                height: 700,
+                width: double.infinity,
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Filter your search',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.close),
+                          onPressed: () => Navigator.pop(context),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      'OFFERS',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey[600],
+                      ),
+                    ),
+                    SizedBox(height: 15),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            _buildOfferChip('Delivery', setDialogState),
+                            SizedBox(width: 15),
+                            _buildOfferChip('Pick Up', setDialogState),
+                            SizedBox(width: 15),
+                            _buildOfferChip('Offer', setDialogState),
+                          ],
+                        ),
+                        SizedBox(height: 10),
+                        _buildOfferChip(
+                          'Online payment available',
+                          setDialogState,
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 30),
+                    Text(
+                      'DELIVER TIME',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey[600],
+                      ),
+                    ),
+                    SizedBox(height: 15),
+                    Row(
+                      children: [
+                        _buildTimeChip('10-15 min', setDialogState),
+                        SizedBox(width: 7),
+                        _buildTimeChip('20 min', setDialogState),
+                        SizedBox(width: 7),
+                        _buildTimeChip('30 min', setDialogState),
+                      ],
+                    ),
+                    SizedBox(height: 30),
+                    Text(
+                      'PRICING',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey[600],
+                      ),
+                    ),
+                    SizedBox(height: 15),
+                    Row(
+                      children: [
+                        _buildPriceChip('\$', setDialogState),
+                        SizedBox(width: 10),
+                        _buildPriceChip('\$\$', setDialogState),
+                        SizedBox(width: 10),
+                        _buildPriceChip('\$\$\$', setDialogState),
+                      ],
+                    ),
+                    SizedBox(height: 30),
+                    Text(
+                      'RATING',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey[600],
+                      ),
+                    ),
+                    SizedBox(height: 15),
+                    Row(
+                      children: List.generate(5, (index) {
+                        return GestureDetector(
+                          onTap: () {
+                            setDialogState(() {
+                              selectedRating = index + 1;
+                            });
+                          },
+                          child: Container(
+                            height: 50,
+                            width: 50,
+                            margin: EdgeInsets.only(right: 8),
+                            padding: EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(color: Colors.grey.shade300),
+                            ),
+                            child: Icon(
+                              Icons.star,
+                              color:
+                                  index < selectedRating
+                                      ? Colors.orange
+                                      : Colors.grey.shade300,
+                              size: 24,
+                            ),
+                          ),
+                        );
+                      }),
+                    ),
+                    Spacer(),
+                    Button(
+                      text: "FILTER",
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+
+  Widget _buildOfferChip(String text, StateSetter setDialogState) {
+    bool isSelected = selectedOffer == text;
+    return GestureDetector(
+      onTap: () {
+        setDialogState(() {
+          selectedOffer = text;
+        });
+      },
+      child: Container(
+        height: 50,
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 13),
+        decoration: BoxDecoration(
+          color: isSelected ? Colors.orange : Colors.white,
+          borderRadius: BorderRadius.circular(25),
+          border: Border.all(
+            color: isSelected ? Colors.orange : Colors.grey.shade300,
+          ),
+        ),
+        child: Text(
+          text,
+          style: TextStyle(
+            color: isSelected ? Colors.white : Colors.black,
+            fontSize: 16,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTimeChip(String text, StateSetter setDialogState) {
+    bool isSelected = selectedDeliveryTime == text;
+    return GestureDetector(
+      onTap: () {
+        setDialogState(() {
+          selectedDeliveryTime = text;
+        });
+      },
+      child: Container(
+        height: 50,
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 13),
+        decoration: BoxDecoration(
+          color: isSelected ? Colors.orange : Colors.white,
+          borderRadius: BorderRadius.circular(25),
+          border: Border.all(
+            color: isSelected ? Colors.orange : Colors.grey.shade300,
+          ),
+        ),
+        child: Text(
+          text,
+          style: TextStyle(
+            color: isSelected ? Colors.white : Colors.black,
+            fontSize: 16,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPriceChip(String text, StateSetter setDialogState) {
+    bool isSelected = selectedPricing == text;
+    return GestureDetector(
+      onTap: () {
+        setDialogState(() {
+          selectedPricing = text;
+        });
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 13),
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: isSelected ? Colors.orange : Colors.white,
+          border: Border.all(
+            color: isSelected ? Colors.orange : Colors.grey.shade300,
+          ),
+        ),
+        child: Text(
+          text,
+          style: TextStyle(
+            color: isSelected ? Colors.white : Colors.black,
+            fontSize: 18,
+          ),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +292,7 @@ class _RestaurantViewState extends State<RestaurantView> {
             ),
             child: IconButton(
               icon: Icon(Icons.more_horiz, color: Colors.black),
-              onPressed: () {},
+              onPressed: _showFilterDialog,
             ),
           ),
         ],
