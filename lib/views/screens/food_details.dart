@@ -23,118 +23,85 @@ class FoodDetailsScreenState extends State<FoodDetailsScreen> {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Stack(
-                    children: [
-                      Container(
-                        height: 300,
-                        width: double.infinity,
-                        margin: EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade300,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
+          Padding(
+            padding: const EdgeInsets.only(top: 40, left: 20, right: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade300,
+                        shape: BoxShape.circle,
                       ),
-
-                      Positioned(
-                        top: 50,
-                        left: 30,
-                        right: 30,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              width: 40,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                shape: BoxShape.circle,
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black,
-                                    blurRadius: 8,
-                                    offset: Offset(0, 2),
-                                  ),
-                                ],
-                              ),
-                              child: IconButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                icon: Icon(Icons.arrow_back_ios, size: 18),
-                                padding: EdgeInsets.zero,
-                              ),
-                            ),
-
-                            Text(
-                              "Details",
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black,
-                              ),
-                            ),
-
-                            Container(
-                              width: 40,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                shape: BoxShape.circle,
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black,
-                                    blurRadius: 8,
-                                    offset: Offset(0, 2),
-                                  ),
-                                ],
-                              ),
-                              child: Icon(
-                                Icons.favorite_border,
-                                size: 20,
-                                color: Colors.grey.shade600,
-                              ),
-                            ),
-                          ],
-                        ),
+                      child: IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: Icon(Icons.arrow_back_ios, size: 18),
                       ),
-                    ],
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        RestaurantInfo(),
-                        SizedBox(height: 20),
-                        FoodInfo(),
-                        SizedBox(height: 20),
-                        InfoRow(),
-                        SizedBox(height: 25),
-                        SizeSelection(
-                          selectedSize: selectedSize,
-                          onSizeChanged: (size) {
-                            setState(() {
-                              selectedSize = size;
-                            });
-                          },
-                        ),
-                        SizedBox(height: 25),
-                        IngredientsSection(),
-                        SizedBox(height: 30),
-                      ],
                     ),
-                  ),
-                ],
-              ),
+                    SizedBox(width: 20),
+                    Text(
+                      "Details",
+                      style: TextStyle(fontSize: 18, color: Colors.black),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 30),
+                Stack(
+                  children: [
+                    Container(
+                      height: 200,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                    Positioned(
+                      right: 20,
+                      bottom: 20,
+                      child: Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade400,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.favorite_border,
+                          size: 18,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                RestaurantInfo(),
+                SizedBox(height: 20),
+                FoodInfo(),
+                SizedBox(height: 20),
+                InfoRow(),
+                SizedBox(height: 25),
+                SizeSelection(
+                  selectedSize: selectedSize,
+                  onSizeChanged: (size) {
+                    setState(() {
+                      selectedSize = size;
+                    });
+                  },
+                ),
+                SizedBox(height: 20),
+                IngredientsSection(),
+                SizedBox(height: 30),
+                Button(text: "ADD TO CART", onTap: () {}),
+              ],
             ),
           ),
-
-          Button(text: "ADD TO CART", onTap: () {}),
         ],
       ),
     );

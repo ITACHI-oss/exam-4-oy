@@ -11,26 +11,19 @@ class IngredientsSection extends StatelessWidget {
       children: [
         Text(
           "INGREDIENTS",
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
+          style: TextStyle(fontSize: 16, color: Colors.black),
         ),
 
         SizedBox(height: 15),
 
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             IngredientIcon(icon: Icons.local_pizza),
-            SizedBox(width: 15),
             IngredientIcon(icon: Icons.restaurant),
-            SizedBox(width: 15),
-            IngredientIcon(icon: Icons.local_fire_department),
-            SizedBox(width: 15),
+            IngredientIcon(icon: Icons.smoke_free),
             IngredientIcon(icon: Icons.eco),
-            SizedBox(width: 15),
-            IngredientIcon(icon: Icons.grain),
+            IngredientIcon(icon: Icons.free_breakfast),
           ],
         ),
       ],

@@ -20,19 +20,14 @@ class SizeButton extends StatelessWidget {
         width: 50,
         height: 50,
         decoration: BoxDecoration(
-          color: isSelected ? Colors.orange : Colors.white,
+          color: isSelected ? Colors.orange : Colors.grey.shade200,
           borderRadius: BorderRadius.circular(25),
-          border: Border.all(
-            color: isSelected ? Colors.orange : Colors.grey.shade300,
-            width: 2,
-          ),
         ),
         child: Center(
           child: Text(
             size,
             style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
+              fontSize: 16,
               color: isSelected ? Colors.white : Colors.black,
             ),
           ),

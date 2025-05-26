@@ -13,44 +13,30 @@ class SizeSelection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Row(
       children: [
-        Text(
-          "SIZE:",
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
+        Text("SIZE:", style: TextStyle(fontSize: 16, color: Colors.black)),
+        SizedBox(width: 20),
+        SizeButton(
+          size: "10\"",
+          isSelected: selectedSize == "10\"",
+          onTap: () => onSizeChanged("10\""),
         ),
 
-        SizedBox(height: 12),
+        SizedBox(width: 15),
 
-        Row(
-          children: [
-            SizeButton(
-              size: "10\"",
-              isSelected: selectedSize == "10\"",
-              onTap: () => onSizeChanged("10\""),
-            ),
+        SizeButton(
+          size: "14\"",
+          isSelected: selectedSize == "14\"",
+          onTap: () => onSizeChanged("14\""),
+        ),
 
-            SizedBox(width: 15),
+        SizedBox(width: 15),
 
-            SizeButton(
-              size: "14\"",
-              isSelected: selectedSize == "14\"",
-              onTap: () => onSizeChanged("14\""),
-            ),
-
-            SizedBox(width: 15),
-
-            SizeButton(
-              size: "16\"",
-              isSelected: selectedSize == "16\"",
-              onTap: () => onSizeChanged("16\""),
-            ),
-          ],
+        SizeButton(
+          size: "16\"",
+          isSelected: selectedSize == "16\"",
+          onTap: () => onSizeChanged("16\""),
         ),
       ],
     );

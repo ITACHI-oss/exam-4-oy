@@ -8,8 +8,8 @@ class IngredientIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 45,
-      height: 45,
+      width: 50,
+      height: 50,
       decoration: BoxDecoration(
         color: Colors.orange.shade50,
         shape: BoxShape.circle,
