@@ -1,7 +1,7 @@
-import 'package:exam_4_oy/views/widgets/button.dart';
 import 'package:exam_4_oy/views/widgets/food_info.dart';
 import 'package:exam_4_oy/views/widgets/info_row.dart';
 import 'package:exam_4_oy/views/widgets/ingredient_selection.dart';
+import 'package:exam_4_oy/views/widgets/product_action.dart';
 import 'package:exam_4_oy/views/widgets/restaurant_info.dart';
 import 'package:exam_4_oy/views/widgets/size_selection.dart';
 import 'package:flutter/material.dart';
@@ -98,11 +98,11 @@ class FoodDetailsScreenState extends State<FoodDetailsScreen> {
                 ),
                 SizedBox(height: 20),
                 IngredientsSection(),
-                SizedBox(height: 30),
-                Button(text: "ADD TO CART", onTap: () {}),
               ],
             ),
           ),
+          SizedBox(height: 10),
+          ProductActionWidget(),
         ],
       ),
     );
