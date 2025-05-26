@@ -11,21 +11,15 @@ class FoodInfo extends StatelessWidget {
         Text(
           "Pizza Calzone European",
           style: TextStyle(
-            fontSize: 24,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
         ),
-
         SizedBox(height: 8),
-
         Text(
           "Prosciutto e funghi is a pizza variety that is topped with tomato sauce.",
-          style: TextStyle(
-            fontSize: 14,
-            color: Colors.grey.shade600,
-            height: 1.4,
-          ),
+          style: TextStyle(fontSize: 14, color: Colors.grey, height: 1.4),
         ),
       ],
     );

@@ -81,6 +81,7 @@ class FoodDetailsScreenState extends State<FoodDetailsScreen> {
                     ),
                   ],
                 ),
+                SizedBox(height: 30),
                 RestaurantInfo(),
                 SizedBox(height: 20),
                 FoodInfo(),
