@@ -19,24 +19,19 @@ class BurgerCard extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: Offset(0, 2),
-          ),
+          BoxShadow(color: Colors.grey, blurRadius: 5, offset: Offset(1, 1)),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            height: 120,
+            height: 130,
             decoration: BoxDecoration(
               color: Colors.grey,
               borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
             ),
           ),
-
           Padding(
             padding: EdgeInsets.all(12),
             child: Column(
@@ -71,7 +66,6 @@ class BurgerCard extends StatelessWidget {
                         color: Colors.black,
                       ),
                     ),
-
                     Container(
                       width: 32,
                       height: 32,

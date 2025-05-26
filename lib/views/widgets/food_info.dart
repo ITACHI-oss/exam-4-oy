@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class FoodInfo extends StatelessWidget {
-  const FoodInfo({super.key});
+  final String text;
+  final String labeltext;
+  const FoodInfo({super.key, required this.text, required this.labeltext});
 
   @override
   Widget build(BuildContext context) {
@@ -9,7 +11,7 @@ class FoodInfo extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Pizza Calzone European",
+          text,
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -18,7 +20,7 @@ class FoodInfo extends StatelessWidget {
         ),
         SizedBox(height: 8),
         Text(
-          "Prosciutto e funghi is a pizza variety that is topped with tomato sauce.",
+          labeltext,
           style: TextStyle(fontSize: 14, color: Colors.grey, height: 1.4),
         ),
       ],

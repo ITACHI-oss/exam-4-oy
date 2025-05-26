@@ -84,7 +84,11 @@ class FoodDetailsScreenState extends State<FoodDetailsScreen> {
                 SizedBox(height: 30),
                 RestaurantInfo(),
                 SizedBox(height: 20),
-                FoodInfo(),
+                FoodInfo(
+                  text: "Pizza Calzone European",
+                  labeltext:
+                      "Prosciutto e funghi is a pizza variety that is topped with tomato sauce.",
+                ),
                 SizedBox(height: 20),
                 InfoRow(),
                 SizedBox(height: 25),
